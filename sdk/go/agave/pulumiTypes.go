@@ -14,27 +14,124 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type Flags struct {
-	AllowPrivateAddr             *bool    `pulumi:"allowPrivateAddr"`
-	BlockProductionMethod        string   `pulumi:"blockProductionMethod"`
-	DynamicPortRange             string   `pulumi:"dynamicPortRange"`
-	EntryPoint                   []string `pulumi:"entryPoint"`
-	ExpectedGenesisHash          *string  `pulumi:"expectedGenesisHash"`
-	ExtraFlags                   []string `pulumi:"extraFlags"`
-	FullRpcAPI                   *bool    `pulumi:"fullRpcAPI"`
-	FullSnapshotIntervalSlots    int      `pulumi:"fullSnapshotIntervalSlots"`
-	GossipHost                   *string  `pulumi:"gossipHost"`
-	GossipPort                   int      `pulumi:"gossipPort"`
-	KnownValidator               []string `pulumi:"knownValidator"`
-	LimitLedgerSize              int      `pulumi:"limitLedgerSize"`
-	NoVoting                     *bool    `pulumi:"noVoting"`
-	NoWaitForVoteToStartLeader   bool     `pulumi:"noWaitForVoteToStartLeader"`
-	OnlyKnownRPC                 bool     `pulumi:"onlyKnownRPC"`
-	PrivateRPC                   bool     `pulumi:"privateRPC"`
-	RpcBindAddress               string   `pulumi:"rpcBindAddress"`
-	RpcPort                      int      `pulumi:"rpcPort"`
-	TvuReceiveThreads            *int     `pulumi:"tvuReceiveThreads"`
-	UseSnapshotArchivesAtStartup string   `pulumi:"useSnapshotArchivesAtStartup"`
-	WalRecoveryMode              string   `pulumi:"walRecoveryMode"`
+	AccountIndex                        []string `pulumi:"accountIndex"`
+	AccountIndexExcludeKey              []string `pulumi:"accountIndexExcludeKey"`
+	AccountIndexIncludeKey              []string `pulumi:"accountIndexIncludeKey"`
+	AccountShrinkPath                   []string `pulumi:"accountShrinkPath"`
+	AccountsDbCacheLimitMb              *int     `pulumi:"accountsDbCacheLimitMb"`
+	AccountsDbTestHashCalculation       *bool    `pulumi:"accountsDbTestHashCalculation"`
+	AccountsHashCachePath               *string  `pulumi:"accountsHashCachePath"`
+	AccountsIndexBins                   *int     `pulumi:"accountsIndexBins"`
+	AccountsIndexPath                   []string `pulumi:"accountsIndexPath"`
+	AccountsIndexScanResultsLimitMb     *int     `pulumi:"accountsIndexScanResultsLimitMb"`
+	AccountsShrinkOptimizeTotalSpace    *bool    `pulumi:"accountsShrinkOptimizeTotalSpace"`
+	AccountsShrinkRatio                 *string  `pulumi:"accountsShrinkRatio"`
+	AllowPrivateAddr                    *bool    `pulumi:"allowPrivateAddr"`
+	AuthorizedVoter                     []string `pulumi:"authorizedVoter"`
+	BindAddress                         *string  `pulumi:"bindAddress"`
+	BlockProductionMethod               *string  `pulumi:"blockProductionMethod"`
+	BlockVerificationMethod             *string  `pulumi:"blockVerificationMethod"`
+	CheckVoteAccount                    *string  `pulumi:"checkVoteAccount"`
+	ContactDebugInterval                *int     `pulumi:"contactDebugInterval"`
+	Cuda                                *bool    `pulumi:"cuda"`
+	DebugKey                            []string `pulumi:"debugKey"`
+	DevHaltAtSlot                       *int     `pulumi:"devHaltAtSlot"`
+	DisableBankingTrace                 *bool    `pulumi:"disableBankingTrace"`
+	DynamicPortRange                    *string  `pulumi:"dynamicPortRange"`
+	EnableBankingTrace                  *int     `pulumi:"enableBankingTrace"`
+	EnableBigtableLedgerUpload          *bool    `pulumi:"enableBigtableLedgerUpload"`
+	EnableExtendedTxMetadataStorage     *bool    `pulumi:"enableExtendedTxMetadataStorage"`
+	EnableRpcBigtableLedgerStorage      *bool    `pulumi:"enableRpcBigtableLedgerStorage"`
+	EnableRpcTransactionHistory         *bool    `pulumi:"enableRpcTransactionHistory"`
+	EntryPoint                          []string `pulumi:"entryPoint"`
+	EtcdCacertFile                      *string  `pulumi:"etcdCacertFile"`
+	EtcdCertFile                        *string  `pulumi:"etcdCertFile"`
+	EtcdDomainName                      *string  `pulumi:"etcdDomainName"`
+	EtcdEndpoint                        []string `pulumi:"etcdEndpoint"`
+	EtcdKeyFile                         *string  `pulumi:"etcdKeyFile"`
+	ExpectedBankHash                    *string  `pulumi:"expectedBankHash"`
+	ExpectedGenesisHash                 *string  `pulumi:"expectedGenesisHash"`
+	ExpectedShredVersion                *int     `pulumi:"expectedShredVersion"`
+	ExtraFlags                          []string `pulumi:"extraFlags"`
+	FullRpcAPI                          *bool    `pulumi:"fullRpcAPI"`
+	FullSnapshotArchivePath             *string  `pulumi:"fullSnapshotArchivePath"`
+	FullSnapshotIntervalSlots           *int     `pulumi:"fullSnapshotIntervalSlots"`
+	GeyserPluginAlwaysEnabled           *bool    `pulumi:"geyserPluginAlwaysEnabled"`
+	GeyserPluginConfig                  []string `pulumi:"geyserPluginConfig"`
+	GossipHost                          *string  `pulumi:"gossipHost"`
+	GossipPort                          *int     `pulumi:"gossipPort"`
+	GossipValidator                     []string `pulumi:"gossipValidator"`
+	HardFork                            []int    `pulumi:"hardFork"`
+	HealthCheckSlotDistance             *int     `pulumi:"healthCheckSlotDistance"`
+	IncrementalSnapshotArchivePath      *string  `pulumi:"incrementalSnapshotArchivePath"`
+	InitCompleteFile                    *string  `pulumi:"initCompleteFile"`
+	KnownValidator                      []string `pulumi:"knownValidator"`
+	LimitLedgerSize                     *int     `pulumi:"limitLedgerSize"`
+	LogMessagesBytesLimit               *int     `pulumi:"logMessagesBytesLimit"`
+	MaxGenesisArchiveUnpackedSize       *int     `pulumi:"maxGenesisArchiveUnpackedSize"`
+	MaximumFullSnapshotsToRetain        *int     `pulumi:"maximumFullSnapshotsToRetain"`
+	MaximumIncrementalSnapshotsToRetain *int     `pulumi:"maximumIncrementalSnapshotsToRetain"`
+	MaximumLocalSnapshotAge             *int     `pulumi:"maximumLocalSnapshotAge"`
+	MaximumSnapshotDownloadAbort        *int     `pulumi:"maximumSnapshotDownloadAbort"`
+	MinimalSnapshotDownloadSpeed        *int     `pulumi:"minimalSnapshotDownloadSpeed"`
+	NoGenesisFetch                      *bool    `pulumi:"noGenesisFetch"`
+	NoIncrementalSnapshots              *bool    `pulumi:"noIncrementalSnapshots"`
+	NoSnapshotFetch                     *bool    `pulumi:"noSnapshotFetch"`
+	NoVoting                            *bool    `pulumi:"noVoting"`
+	NoWaitForVoteToStartLeader          bool     `pulumi:"noWaitForVoteToStartLeader"`
+	OnlyKnownRPC                        *bool    `pulumi:"onlyKnownRPC"`
+	PrivateRPC                          *bool    `pulumi:"privateRPC"`
+	PublicRpcAddress                    *string  `pulumi:"publicRpcAddress"`
+	PublicTpuAddress                    *string  `pulumi:"publicTpuAddress"`
+	PublicTpuForwardsAddress            *string  `pulumi:"publicTpuForwardsAddress"`
+	RepairValidator                     []string `pulumi:"repairValidator"`
+	RequireTower                        *bool    `pulumi:"requireTower"`
+	RestrictedRepairOnlyMode            *bool    `pulumi:"restrictedRepairOnlyMode"`
+	RocksdbFifoShredStorageSize         *int     `pulumi:"rocksdbFifoShredStorageSize"`
+	RocksdbShredCompaction              *string  `pulumi:"rocksdbShredCompaction"`
+	RpcBigtableAppProfileId             *string  `pulumi:"rpcBigtableAppProfileId"`
+	RpcBigtableInstanceName             *string  `pulumi:"rpcBigtableInstanceName"`
+	RpcBigtableMaxMessageSize           *int     `pulumi:"rpcBigtableMaxMessageSize"`
+	RpcBigtableTimeout                  *int     `pulumi:"rpcBigtableTimeout"`
+	RpcBindAddress                      string   `pulumi:"rpcBindAddress"`
+	RpcFaucetAddress                    *string  `pulumi:"rpcFaucetAddress"`
+	RpcMaxMultipleAccounts              *int     `pulumi:"rpcMaxMultipleAccounts"`
+	RpcMaxRequestBodySize               *int     `pulumi:"rpcMaxRequestBodySize"`
+	RpcNicenessAdjustment               *int     `pulumi:"rpcNicenessAdjustment"`
+	RpcPort                             int      `pulumi:"rpcPort"`
+	RpcPubsubEnableBlockSubscription    *bool    `pulumi:"rpcPubsubEnableBlockSubscription"`
+	RpcPubsubEnableVoteSubscription     *bool    `pulumi:"rpcPubsubEnableVoteSubscription"`
+	RpcPubsubMaxActiveSubscriptions     *int     `pulumi:"rpcPubsubMaxActiveSubscriptions"`
+	RpcPubsubNotificationThreads        *int     `pulumi:"rpcPubsubNotificationThreads"`
+	RpcPubsubQueueCapacityBytes         *int     `pulumi:"rpcPubsubQueueCapacityBytes"`
+	RpcPubsubQueueCapacityItems         *int     `pulumi:"rpcPubsubQueueCapacityItems"`
+	RpcPubsubWorkerThreads              *int     `pulumi:"rpcPubsubWorkerThreads"`
+	RpcScanAndFixRoots                  *bool    `pulumi:"rpcScanAndFixRoots"`
+	RpcSendLeaderCount                  *int     `pulumi:"rpcSendLeaderCount"`
+	RpcSendRetryMs                      *int     `pulumi:"rpcSendRetryMs"`
+	RpcSendServiceMaxRetries            *int     `pulumi:"rpcSendServiceMaxRetries"`
+	RpcSendTransactionAlsoLeader        *bool    `pulumi:"rpcSendTransactionAlsoLeader"`
+	RpcSendTransactionRetryPoolMaxSize  *int     `pulumi:"rpcSendTransactionRetryPoolMaxSize"`
+	RpcSendTransactionTpuPeer           []string `pulumi:"rpcSendTransactionTpuPeer"`
+	RpcThreads                          *int     `pulumi:"rpcThreads"`
+	SkipPreflightHealthCheck            *bool    `pulumi:"skipPreflightHealthCheck"`
+	SkipSeedPhraseValidation            *bool    `pulumi:"skipSeedPhraseValidation"`
+	SkipStartupLedgerVerification       *bool    `pulumi:"skipStartupLedgerVerification"`
+	SnapshotArchiveFormat               *string  `pulumi:"snapshotArchiveFormat"`
+	SnapshotIntervalSlots               *int     `pulumi:"snapshotIntervalSlots"`
+	SnapshotPackagerNicenessAdjustment  *int     `pulumi:"snapshotPackagerNicenessAdjustment"`
+	SnapshotVersion                     *string  `pulumi:"snapshotVersion"`
+	StakedNodesOverrides                *string  `pulumi:"stakedNodesOverrides"`
+	TowerStorage                        *string  `pulumi:"towerStorage"`
+	TpuCoalesceMs                       *int     `pulumi:"tpuCoalesceMs"`
+	TpuConnectionPoolSize               *int     `pulumi:"tpuConnectionPoolSize"`
+	TpuDisableQuic                      *bool    `pulumi:"tpuDisableQuic"`
+	TpuEnableUdp                        *bool    `pulumi:"tpuEnableUdp"`
+	TvuReceiveThreads                   *int     `pulumi:"tvuReceiveThreads"`
+	UnifiedSchedulerHandlerThreads      *int     `pulumi:"unifiedSchedulerHandlerThreads"`
+	UseSnapshotArchivesAtStartup        *string  `pulumi:"useSnapshotArchivesAtStartup"`
+	WaitForSupermajority                *int     `pulumi:"waitForSupermajority"`
+	WalRecoveryMode                     string   `pulumi:"walRecoveryMode"`
 }
 
 // FlagsInput is an input type that accepts FlagsArgs and FlagsOutput values.
@@ -49,27 +146,124 @@ type FlagsInput interface {
 }
 
 type FlagsArgs struct {
-	AllowPrivateAddr             pulumi.BoolPtrInput     `pulumi:"allowPrivateAddr"`
-	BlockProductionMethod        pulumi.StringInput      `pulumi:"blockProductionMethod"`
-	DynamicPortRange             pulumi.StringInput      `pulumi:"dynamicPortRange"`
-	EntryPoint                   pulumi.StringArrayInput `pulumi:"entryPoint"`
-	ExpectedGenesisHash          pulumi.StringPtrInput   `pulumi:"expectedGenesisHash"`
-	ExtraFlags                   pulumi.StringArrayInput `pulumi:"extraFlags"`
-	FullRpcAPI                   pulumi.BoolPtrInput     `pulumi:"fullRpcAPI"`
-	FullSnapshotIntervalSlots    pulumi.IntInput         `pulumi:"fullSnapshotIntervalSlots"`
-	GossipHost                   pulumi.StringPtrInput   `pulumi:"gossipHost"`
-	GossipPort                   pulumi.IntInput         `pulumi:"gossipPort"`
-	KnownValidator               pulumi.StringArrayInput `pulumi:"knownValidator"`
-	LimitLedgerSize              pulumi.IntInput         `pulumi:"limitLedgerSize"`
-	NoVoting                     pulumi.BoolPtrInput     `pulumi:"noVoting"`
-	NoWaitForVoteToStartLeader   pulumi.BoolInput        `pulumi:"noWaitForVoteToStartLeader"`
-	OnlyKnownRPC                 pulumi.BoolInput        `pulumi:"onlyKnownRPC"`
-	PrivateRPC                   pulumi.BoolInput        `pulumi:"privateRPC"`
-	RpcBindAddress               pulumi.StringInput      `pulumi:"rpcBindAddress"`
-	RpcPort                      pulumi.IntInput         `pulumi:"rpcPort"`
-	TvuReceiveThreads            pulumi.IntPtrInput      `pulumi:"tvuReceiveThreads"`
-	UseSnapshotArchivesAtStartup pulumi.StringInput      `pulumi:"useSnapshotArchivesAtStartup"`
-	WalRecoveryMode              pulumi.StringInput      `pulumi:"walRecoveryMode"`
+	AccountIndex                        pulumi.StringArrayInput `pulumi:"accountIndex"`
+	AccountIndexExcludeKey              pulumi.StringArrayInput `pulumi:"accountIndexExcludeKey"`
+	AccountIndexIncludeKey              pulumi.StringArrayInput `pulumi:"accountIndexIncludeKey"`
+	AccountShrinkPath                   pulumi.StringArrayInput `pulumi:"accountShrinkPath"`
+	AccountsDbCacheLimitMb              pulumi.IntPtrInput      `pulumi:"accountsDbCacheLimitMb"`
+	AccountsDbTestHashCalculation       pulumi.BoolPtrInput     `pulumi:"accountsDbTestHashCalculation"`
+	AccountsHashCachePath               pulumi.StringPtrInput   `pulumi:"accountsHashCachePath"`
+	AccountsIndexBins                   pulumi.IntPtrInput      `pulumi:"accountsIndexBins"`
+	AccountsIndexPath                   pulumi.StringArrayInput `pulumi:"accountsIndexPath"`
+	AccountsIndexScanResultsLimitMb     pulumi.IntPtrInput      `pulumi:"accountsIndexScanResultsLimitMb"`
+	AccountsShrinkOptimizeTotalSpace    pulumi.BoolPtrInput     `pulumi:"accountsShrinkOptimizeTotalSpace"`
+	AccountsShrinkRatio                 pulumi.StringPtrInput   `pulumi:"accountsShrinkRatio"`
+	AllowPrivateAddr                    pulumi.BoolPtrInput     `pulumi:"allowPrivateAddr"`
+	AuthorizedVoter                     pulumi.StringArrayInput `pulumi:"authorizedVoter"`
+	BindAddress                         pulumi.StringPtrInput   `pulumi:"bindAddress"`
+	BlockProductionMethod               pulumi.StringPtrInput   `pulumi:"blockProductionMethod"`
+	BlockVerificationMethod             pulumi.StringPtrInput   `pulumi:"blockVerificationMethod"`
+	CheckVoteAccount                    pulumi.StringPtrInput   `pulumi:"checkVoteAccount"`
+	ContactDebugInterval                pulumi.IntPtrInput      `pulumi:"contactDebugInterval"`
+	Cuda                                pulumi.BoolPtrInput     `pulumi:"cuda"`
+	DebugKey                            pulumi.StringArrayInput `pulumi:"debugKey"`
+	DevHaltAtSlot                       pulumi.IntPtrInput      `pulumi:"devHaltAtSlot"`
+	DisableBankingTrace                 pulumi.BoolPtrInput     `pulumi:"disableBankingTrace"`
+	DynamicPortRange                    pulumi.StringPtrInput   `pulumi:"dynamicPortRange"`
+	EnableBankingTrace                  pulumi.IntPtrInput      `pulumi:"enableBankingTrace"`
+	EnableBigtableLedgerUpload          pulumi.BoolPtrInput     `pulumi:"enableBigtableLedgerUpload"`
+	EnableExtendedTxMetadataStorage     pulumi.BoolPtrInput     `pulumi:"enableExtendedTxMetadataStorage"`
+	EnableRpcBigtableLedgerStorage      pulumi.BoolPtrInput     `pulumi:"enableRpcBigtableLedgerStorage"`
+	EnableRpcTransactionHistory         pulumi.BoolPtrInput     `pulumi:"enableRpcTransactionHistory"`
+	EntryPoint                          pulumi.StringArrayInput `pulumi:"entryPoint"`
+	EtcdCacertFile                      pulumi.StringPtrInput   `pulumi:"etcdCacertFile"`
+	EtcdCertFile                        pulumi.StringPtrInput   `pulumi:"etcdCertFile"`
+	EtcdDomainName                      pulumi.StringPtrInput   `pulumi:"etcdDomainName"`
+	EtcdEndpoint                        pulumi.StringArrayInput `pulumi:"etcdEndpoint"`
+	EtcdKeyFile                         pulumi.StringPtrInput   `pulumi:"etcdKeyFile"`
+	ExpectedBankHash                    pulumi.StringPtrInput   `pulumi:"expectedBankHash"`
+	ExpectedGenesisHash                 pulumi.StringPtrInput   `pulumi:"expectedGenesisHash"`
+	ExpectedShredVersion                pulumi.IntPtrInput      `pulumi:"expectedShredVersion"`
+	ExtraFlags                          pulumi.StringArrayInput `pulumi:"extraFlags"`
+	FullRpcAPI                          pulumi.BoolPtrInput     `pulumi:"fullRpcAPI"`
+	FullSnapshotArchivePath             pulumi.StringPtrInput   `pulumi:"fullSnapshotArchivePath"`
+	FullSnapshotIntervalSlots           pulumi.IntPtrInput      `pulumi:"fullSnapshotIntervalSlots"`
+	GeyserPluginAlwaysEnabled           pulumi.BoolPtrInput     `pulumi:"geyserPluginAlwaysEnabled"`
+	GeyserPluginConfig                  pulumi.StringArrayInput `pulumi:"geyserPluginConfig"`
+	GossipHost                          pulumi.StringPtrInput   `pulumi:"gossipHost"`
+	GossipPort                          pulumi.IntPtrInput      `pulumi:"gossipPort"`
+	GossipValidator                     pulumi.StringArrayInput `pulumi:"gossipValidator"`
+	HardFork                            pulumi.IntArrayInput    `pulumi:"hardFork"`
+	HealthCheckSlotDistance             pulumi.IntPtrInput      `pulumi:"healthCheckSlotDistance"`
+	IncrementalSnapshotArchivePath      pulumi.StringPtrInput   `pulumi:"incrementalSnapshotArchivePath"`
+	InitCompleteFile                    pulumi.StringPtrInput   `pulumi:"initCompleteFile"`
+	KnownValidator                      pulumi.StringArrayInput `pulumi:"knownValidator"`
+	LimitLedgerSize                     pulumi.IntPtrInput      `pulumi:"limitLedgerSize"`
+	LogMessagesBytesLimit               pulumi.IntPtrInput      `pulumi:"logMessagesBytesLimit"`
+	MaxGenesisArchiveUnpackedSize       pulumi.IntPtrInput      `pulumi:"maxGenesisArchiveUnpackedSize"`
+	MaximumFullSnapshotsToRetain        pulumi.IntPtrInput      `pulumi:"maximumFullSnapshotsToRetain"`
+	MaximumIncrementalSnapshotsToRetain pulumi.IntPtrInput      `pulumi:"maximumIncrementalSnapshotsToRetain"`
+	MaximumLocalSnapshotAge             pulumi.IntPtrInput      `pulumi:"maximumLocalSnapshotAge"`
+	MaximumSnapshotDownloadAbort        pulumi.IntPtrInput      `pulumi:"maximumSnapshotDownloadAbort"`
+	MinimalSnapshotDownloadSpeed        pulumi.IntPtrInput      `pulumi:"minimalSnapshotDownloadSpeed"`
+	NoGenesisFetch                      pulumi.BoolPtrInput     `pulumi:"noGenesisFetch"`
+	NoIncrementalSnapshots              pulumi.BoolPtrInput     `pulumi:"noIncrementalSnapshots"`
+	NoSnapshotFetch                     pulumi.BoolPtrInput     `pulumi:"noSnapshotFetch"`
+	NoVoting                            pulumi.BoolPtrInput     `pulumi:"noVoting"`
+	NoWaitForVoteToStartLeader          pulumi.BoolInput        `pulumi:"noWaitForVoteToStartLeader"`
+	OnlyKnownRPC                        pulumi.BoolPtrInput     `pulumi:"onlyKnownRPC"`
+	PrivateRPC                          pulumi.BoolPtrInput     `pulumi:"privateRPC"`
+	PublicRpcAddress                    pulumi.StringPtrInput   `pulumi:"publicRpcAddress"`
+	PublicTpuAddress                    pulumi.StringPtrInput   `pulumi:"publicTpuAddress"`
+	PublicTpuForwardsAddress            pulumi.StringPtrInput   `pulumi:"publicTpuForwardsAddress"`
+	RepairValidator                     pulumi.StringArrayInput `pulumi:"repairValidator"`
+	RequireTower                        pulumi.BoolPtrInput     `pulumi:"requireTower"`
+	RestrictedRepairOnlyMode            pulumi.BoolPtrInput     `pulumi:"restrictedRepairOnlyMode"`
+	RocksdbFifoShredStorageSize         pulumi.IntPtrInput      `pulumi:"rocksdbFifoShredStorageSize"`
+	RocksdbShredCompaction              pulumi.StringPtrInput   `pulumi:"rocksdbShredCompaction"`
+	RpcBigtableAppProfileId             pulumi.StringPtrInput   `pulumi:"rpcBigtableAppProfileId"`
+	RpcBigtableInstanceName             pulumi.StringPtrInput   `pulumi:"rpcBigtableInstanceName"`
+	RpcBigtableMaxMessageSize           pulumi.IntPtrInput      `pulumi:"rpcBigtableMaxMessageSize"`
+	RpcBigtableTimeout                  pulumi.IntPtrInput      `pulumi:"rpcBigtableTimeout"`
+	RpcBindAddress                      pulumi.StringInput      `pulumi:"rpcBindAddress"`
+	RpcFaucetAddress                    pulumi.StringPtrInput   `pulumi:"rpcFaucetAddress"`
+	RpcMaxMultipleAccounts              pulumi.IntPtrInput      `pulumi:"rpcMaxMultipleAccounts"`
+	RpcMaxRequestBodySize               pulumi.IntPtrInput      `pulumi:"rpcMaxRequestBodySize"`
+	RpcNicenessAdjustment               pulumi.IntPtrInput      `pulumi:"rpcNicenessAdjustment"`
+	RpcPort                             pulumi.IntInput         `pulumi:"rpcPort"`
+	RpcPubsubEnableBlockSubscription    pulumi.BoolPtrInput     `pulumi:"rpcPubsubEnableBlockSubscription"`
+	RpcPubsubEnableVoteSubscription     pulumi.BoolPtrInput     `pulumi:"rpcPubsubEnableVoteSubscription"`
+	RpcPubsubMaxActiveSubscriptions     pulumi.IntPtrInput      `pulumi:"rpcPubsubMaxActiveSubscriptions"`
+	RpcPubsubNotificationThreads        pulumi.IntPtrInput      `pulumi:"rpcPubsubNotificationThreads"`
+	RpcPubsubQueueCapacityBytes         pulumi.IntPtrInput      `pulumi:"rpcPubsubQueueCapacityBytes"`
+	RpcPubsubQueueCapacityItems         pulumi.IntPtrInput      `pulumi:"rpcPubsubQueueCapacityItems"`
+	RpcPubsubWorkerThreads              pulumi.IntPtrInput      `pulumi:"rpcPubsubWorkerThreads"`
+	RpcScanAndFixRoots                  pulumi.BoolPtrInput     `pulumi:"rpcScanAndFixRoots"`
+	RpcSendLeaderCount                  pulumi.IntPtrInput      `pulumi:"rpcSendLeaderCount"`
+	RpcSendRetryMs                      pulumi.IntPtrInput      `pulumi:"rpcSendRetryMs"`
+	RpcSendServiceMaxRetries            pulumi.IntPtrInput      `pulumi:"rpcSendServiceMaxRetries"`
+	RpcSendTransactionAlsoLeader        pulumi.BoolPtrInput     `pulumi:"rpcSendTransactionAlsoLeader"`
+	RpcSendTransactionRetryPoolMaxSize  pulumi.IntPtrInput      `pulumi:"rpcSendTransactionRetryPoolMaxSize"`
+	RpcSendTransactionTpuPeer           pulumi.StringArrayInput `pulumi:"rpcSendTransactionTpuPeer"`
+	RpcThreads                          pulumi.IntPtrInput      `pulumi:"rpcThreads"`
+	SkipPreflightHealthCheck            pulumi.BoolPtrInput     `pulumi:"skipPreflightHealthCheck"`
+	SkipSeedPhraseValidation            pulumi.BoolPtrInput     `pulumi:"skipSeedPhraseValidation"`
+	SkipStartupLedgerVerification       pulumi.BoolPtrInput     `pulumi:"skipStartupLedgerVerification"`
+	SnapshotArchiveFormat               pulumi.StringPtrInput   `pulumi:"snapshotArchiveFormat"`
+	SnapshotIntervalSlots               pulumi.IntPtrInput      `pulumi:"snapshotIntervalSlots"`
+	SnapshotPackagerNicenessAdjustment  pulumi.IntPtrInput      `pulumi:"snapshotPackagerNicenessAdjustment"`
+	SnapshotVersion                     pulumi.StringPtrInput   `pulumi:"snapshotVersion"`
+	StakedNodesOverrides                pulumi.StringPtrInput   `pulumi:"stakedNodesOverrides"`
+	TowerStorage                        pulumi.StringPtrInput   `pulumi:"towerStorage"`
+	TpuCoalesceMs                       pulumi.IntPtrInput      `pulumi:"tpuCoalesceMs"`
+	TpuConnectionPoolSize               pulumi.IntPtrInput      `pulumi:"tpuConnectionPoolSize"`
+	TpuDisableQuic                      pulumi.BoolPtrInput     `pulumi:"tpuDisableQuic"`
+	TpuEnableUdp                        pulumi.BoolPtrInput     `pulumi:"tpuEnableUdp"`
+	TvuReceiveThreads                   pulumi.IntPtrInput      `pulumi:"tvuReceiveThreads"`
+	UnifiedSchedulerHandlerThreads      pulumi.IntPtrInput      `pulumi:"unifiedSchedulerHandlerThreads"`
+	UseSnapshotArchivesAtStartup        pulumi.StringPtrInput   `pulumi:"useSnapshotArchivesAtStartup"`
+	WaitForSupermajority                pulumi.IntPtrInput      `pulumi:"waitForSupermajority"`
+	WalRecoveryMode                     pulumi.StringInput      `pulumi:"walRecoveryMode"`
 }
 
 func (FlagsArgs) ElementType() reflect.Type {
@@ -98,24 +292,156 @@ func (o FlagsOutput) ToFlagsOutputWithContext(ctx context.Context) FlagsOutput {
 	return o
 }
 
+func (o FlagsOutput) AccountIndex() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.AccountIndex }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) AccountIndexExcludeKey() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.AccountIndexExcludeKey }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) AccountIndexIncludeKey() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.AccountIndexIncludeKey }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) AccountShrinkPath() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.AccountShrinkPath }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) AccountsDbCacheLimitMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.AccountsDbCacheLimitMb }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) AccountsDbTestHashCalculation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.AccountsDbTestHashCalculation }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) AccountsHashCachePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.AccountsHashCachePath }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) AccountsIndexBins() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.AccountsIndexBins }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) AccountsIndexPath() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.AccountsIndexPath }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) AccountsIndexScanResultsLimitMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.AccountsIndexScanResultsLimitMb }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) AccountsShrinkOptimizeTotalSpace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.AccountsShrinkOptimizeTotalSpace }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) AccountsShrinkRatio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.AccountsShrinkRatio }).(pulumi.StringPtrOutput)
+}
+
 func (o FlagsOutput) AllowPrivateAddr() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Flags) *bool { return v.AllowPrivateAddr }).(pulumi.BoolPtrOutput)
 }
 
-func (o FlagsOutput) BlockProductionMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v Flags) string { return v.BlockProductionMethod }).(pulumi.StringOutput)
+func (o FlagsOutput) AuthorizedVoter() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.AuthorizedVoter }).(pulumi.StringArrayOutput)
 }
 
-func (o FlagsOutput) DynamicPortRange() pulumi.StringOutput {
-	return o.ApplyT(func(v Flags) string { return v.DynamicPortRange }).(pulumi.StringOutput)
+func (o FlagsOutput) BindAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.BindAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) BlockProductionMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.BlockProductionMethod }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) BlockVerificationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.BlockVerificationMethod }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) CheckVoteAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.CheckVoteAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) ContactDebugInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.ContactDebugInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) Cuda() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.Cuda }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) DebugKey() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.DebugKey }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) DevHaltAtSlot() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.DevHaltAtSlot }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) DisableBankingTrace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.DisableBankingTrace }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) DynamicPortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.DynamicPortRange }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) EnableBankingTrace() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.EnableBankingTrace }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) EnableBigtableLedgerUpload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.EnableBigtableLedgerUpload }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) EnableExtendedTxMetadataStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.EnableExtendedTxMetadataStorage }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) EnableRpcBigtableLedgerStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.EnableRpcBigtableLedgerStorage }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) EnableRpcTransactionHistory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.EnableRpcTransactionHistory }).(pulumi.BoolPtrOutput)
 }
 
 func (o FlagsOutput) EntryPoint() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Flags) []string { return v.EntryPoint }).(pulumi.StringArrayOutput)
 }
 
+func (o FlagsOutput) EtcdCacertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.EtcdCacertFile }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) EtcdCertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.EtcdCertFile }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) EtcdDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.EtcdDomainName }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) EtcdEndpoint() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.EtcdEndpoint }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) EtcdKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.EtcdKeyFile }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) ExpectedBankHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.ExpectedBankHash }).(pulumi.StringPtrOutput)
+}
+
 func (o FlagsOutput) ExpectedGenesisHash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Flags) *string { return v.ExpectedGenesisHash }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) ExpectedShredVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.ExpectedShredVersion }).(pulumi.IntPtrOutput)
 }
 
 func (o FlagsOutput) ExtraFlags() pulumi.StringArrayOutput {
@@ -126,24 +452,96 @@ func (o FlagsOutput) FullRpcAPI() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Flags) *bool { return v.FullRpcAPI }).(pulumi.BoolPtrOutput)
 }
 
-func (o FlagsOutput) FullSnapshotIntervalSlots() pulumi.IntOutput {
-	return o.ApplyT(func(v Flags) int { return v.FullSnapshotIntervalSlots }).(pulumi.IntOutput)
+func (o FlagsOutput) FullSnapshotArchivePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.FullSnapshotArchivePath }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) FullSnapshotIntervalSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.FullSnapshotIntervalSlots }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) GeyserPluginAlwaysEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.GeyserPluginAlwaysEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) GeyserPluginConfig() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.GeyserPluginConfig }).(pulumi.StringArrayOutput)
 }
 
 func (o FlagsOutput) GossipHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Flags) *string { return v.GossipHost }).(pulumi.StringPtrOutput)
 }
 
-func (o FlagsOutput) GossipPort() pulumi.IntOutput {
-	return o.ApplyT(func(v Flags) int { return v.GossipPort }).(pulumi.IntOutput)
+func (o FlagsOutput) GossipPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.GossipPort }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) GossipValidator() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.GossipValidator }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) HardFork() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v Flags) []int { return v.HardFork }).(pulumi.IntArrayOutput)
+}
+
+func (o FlagsOutput) HealthCheckSlotDistance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.HealthCheckSlotDistance }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) IncrementalSnapshotArchivePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.IncrementalSnapshotArchivePath }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) InitCompleteFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.InitCompleteFile }).(pulumi.StringPtrOutput)
 }
 
 func (o FlagsOutput) KnownValidator() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Flags) []string { return v.KnownValidator }).(pulumi.StringArrayOutput)
 }
 
-func (o FlagsOutput) LimitLedgerSize() pulumi.IntOutput {
-	return o.ApplyT(func(v Flags) int { return v.LimitLedgerSize }).(pulumi.IntOutput)
+func (o FlagsOutput) LimitLedgerSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.LimitLedgerSize }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) LogMessagesBytesLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.LogMessagesBytesLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) MaxGenesisArchiveUnpackedSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.MaxGenesisArchiveUnpackedSize }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) MaximumFullSnapshotsToRetain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.MaximumFullSnapshotsToRetain }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) MaximumIncrementalSnapshotsToRetain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.MaximumIncrementalSnapshotsToRetain }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) MaximumLocalSnapshotAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.MaximumLocalSnapshotAge }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) MaximumSnapshotDownloadAbort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.MaximumSnapshotDownloadAbort }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) MinimalSnapshotDownloadSpeed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.MinimalSnapshotDownloadSpeed }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) NoGenesisFetch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.NoGenesisFetch }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) NoIncrementalSnapshots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.NoIncrementalSnapshots }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) NoSnapshotFetch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.NoSnapshotFetch }).(pulumi.BoolPtrOutput)
 }
 
 func (o FlagsOutput) NoVoting() pulumi.BoolPtrOutput {
@@ -154,28 +552,212 @@ func (o FlagsOutput) NoWaitForVoteToStartLeader() pulumi.BoolOutput {
 	return o.ApplyT(func(v Flags) bool { return v.NoWaitForVoteToStartLeader }).(pulumi.BoolOutput)
 }
 
-func (o FlagsOutput) OnlyKnownRPC() pulumi.BoolOutput {
-	return o.ApplyT(func(v Flags) bool { return v.OnlyKnownRPC }).(pulumi.BoolOutput)
+func (o FlagsOutput) OnlyKnownRPC() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.OnlyKnownRPC }).(pulumi.BoolPtrOutput)
 }
 
-func (o FlagsOutput) PrivateRPC() pulumi.BoolOutput {
-	return o.ApplyT(func(v Flags) bool { return v.PrivateRPC }).(pulumi.BoolOutput)
+func (o FlagsOutput) PrivateRPC() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.PrivateRPC }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) PublicRpcAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.PublicRpcAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) PublicTpuAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.PublicTpuAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) PublicTpuForwardsAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.PublicTpuForwardsAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) RepairValidator() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.RepairValidator }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) RequireTower() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.RequireTower }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) RestrictedRepairOnlyMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.RestrictedRepairOnlyMode }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) RocksdbFifoShredStorageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RocksdbFifoShredStorageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RocksdbShredCompaction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.RocksdbShredCompaction }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) RpcBigtableAppProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.RpcBigtableAppProfileId }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) RpcBigtableInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.RpcBigtableInstanceName }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) RpcBigtableMaxMessageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcBigtableMaxMessageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcBigtableTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcBigtableTimeout }).(pulumi.IntPtrOutput)
 }
 
 func (o FlagsOutput) RpcBindAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v Flags) string { return v.RpcBindAddress }).(pulumi.StringOutput)
 }
 
+func (o FlagsOutput) RpcFaucetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.RpcFaucetAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) RpcMaxMultipleAccounts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcMaxMultipleAccounts }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcMaxRequestBodySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcMaxRequestBodySize }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcNicenessAdjustment() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcNicenessAdjustment }).(pulumi.IntPtrOutput)
+}
+
 func (o FlagsOutput) RpcPort() pulumi.IntOutput {
 	return o.ApplyT(func(v Flags) int { return v.RpcPort }).(pulumi.IntOutput)
+}
+
+func (o FlagsOutput) RpcPubsubEnableBlockSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.RpcPubsubEnableBlockSubscription }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) RpcPubsubEnableVoteSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.RpcPubsubEnableVoteSubscription }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) RpcPubsubMaxActiveSubscriptions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcPubsubMaxActiveSubscriptions }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcPubsubNotificationThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcPubsubNotificationThreads }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcPubsubQueueCapacityBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcPubsubQueueCapacityBytes }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcPubsubQueueCapacityItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcPubsubQueueCapacityItems }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcPubsubWorkerThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcPubsubWorkerThreads }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcScanAndFixRoots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.RpcScanAndFixRoots }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) RpcSendLeaderCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcSendLeaderCount }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcSendRetryMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcSendRetryMs }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcSendServiceMaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcSendServiceMaxRetries }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcSendTransactionAlsoLeader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.RpcSendTransactionAlsoLeader }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) RpcSendTransactionRetryPoolMaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcSendTransactionRetryPoolMaxSize }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) RpcSendTransactionTpuPeer() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Flags) []string { return v.RpcSendTransactionTpuPeer }).(pulumi.StringArrayOutput)
+}
+
+func (o FlagsOutput) RpcThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.RpcThreads }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) SkipPreflightHealthCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.SkipPreflightHealthCheck }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) SkipSeedPhraseValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.SkipSeedPhraseValidation }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) SkipStartupLedgerVerification() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.SkipStartupLedgerVerification }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) SnapshotArchiveFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.SnapshotArchiveFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) SnapshotIntervalSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.SnapshotIntervalSlots }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) SnapshotPackagerNicenessAdjustment() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.SnapshotPackagerNicenessAdjustment }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) SnapshotVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.SnapshotVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) StakedNodesOverrides() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.StakedNodesOverrides }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) TowerStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.TowerStorage }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) TpuCoalesceMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.TpuCoalesceMs }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) TpuConnectionPoolSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.TpuConnectionPoolSize }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) TpuDisableQuic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.TpuDisableQuic }).(pulumi.BoolPtrOutput)
+}
+
+func (o FlagsOutput) TpuEnableUdp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Flags) *bool { return v.TpuEnableUdp }).(pulumi.BoolPtrOutput)
 }
 
 func (o FlagsOutput) TvuReceiveThreads() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Flags) *int { return v.TvuReceiveThreads }).(pulumi.IntPtrOutput)
 }
 
-func (o FlagsOutput) UseSnapshotArchivesAtStartup() pulumi.StringOutput {
-	return o.ApplyT(func(v Flags) string { return v.UseSnapshotArchivesAtStartup }).(pulumi.StringOutput)
+func (o FlagsOutput) UnifiedSchedulerHandlerThreads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.UnifiedSchedulerHandlerThreads }).(pulumi.IntPtrOutput)
+}
+
+func (o FlagsOutput) UseSnapshotArchivesAtStartup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Flags) *string { return v.UseSnapshotArchivesAtStartup }).(pulumi.StringPtrOutput)
+}
+
+func (o FlagsOutput) WaitForSupermajority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Flags) *int { return v.WaitForSupermajority }).(pulumi.IntPtrOutput)
 }
 
 func (o FlagsOutput) WalRecoveryMode() pulumi.StringOutput {
@@ -415,13 +997,484 @@ func (o MetricsPtrOutput) User() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ShutdownPolicy struct {
+	Force                *bool `pulumi:"force"`
+	MaxDelinquentStake   *int  `pulumi:"maxDelinquentStake"`
+	MinIdleTime          *int  `pulumi:"minIdleTime"`
+	SkipHealthCheck      *bool `pulumi:"skipHealthCheck"`
+	SkipNewSnapshotCheck *bool `pulumi:"skipNewSnapshotCheck"`
+}
+
+// ShutdownPolicyInput is an input type that accepts ShutdownPolicyArgs and ShutdownPolicyOutput values.
+// You can construct a concrete instance of `ShutdownPolicyInput` via:
+//
+//	ShutdownPolicyArgs{...}
+type ShutdownPolicyInput interface {
+	pulumi.Input
+
+	ToShutdownPolicyOutput() ShutdownPolicyOutput
+	ToShutdownPolicyOutputWithContext(context.Context) ShutdownPolicyOutput
+}
+
+type ShutdownPolicyArgs struct {
+	Force                pulumi.BoolPtrInput `pulumi:"force"`
+	MaxDelinquentStake   pulumi.IntPtrInput  `pulumi:"maxDelinquentStake"`
+	MinIdleTime          pulumi.IntPtrInput  `pulumi:"minIdleTime"`
+	SkipHealthCheck      pulumi.BoolPtrInput `pulumi:"skipHealthCheck"`
+	SkipNewSnapshotCheck pulumi.BoolPtrInput `pulumi:"skipNewSnapshotCheck"`
+}
+
+func (ShutdownPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShutdownPolicy)(nil)).Elem()
+}
+
+func (i ShutdownPolicyArgs) ToShutdownPolicyOutput() ShutdownPolicyOutput {
+	return i.ToShutdownPolicyOutputWithContext(context.Background())
+}
+
+func (i ShutdownPolicyArgs) ToShutdownPolicyOutputWithContext(ctx context.Context) ShutdownPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShutdownPolicyOutput)
+}
+
+func (i ShutdownPolicyArgs) ToShutdownPolicyPtrOutput() ShutdownPolicyPtrOutput {
+	return i.ToShutdownPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ShutdownPolicyArgs) ToShutdownPolicyPtrOutputWithContext(ctx context.Context) ShutdownPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShutdownPolicyOutput).ToShutdownPolicyPtrOutputWithContext(ctx)
+}
+
+// ShutdownPolicyPtrInput is an input type that accepts ShutdownPolicyArgs, ShutdownPolicyPtr and ShutdownPolicyPtrOutput values.
+// You can construct a concrete instance of `ShutdownPolicyPtrInput` via:
+//
+//	        ShutdownPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ShutdownPolicyPtrInput interface {
+	pulumi.Input
+
+	ToShutdownPolicyPtrOutput() ShutdownPolicyPtrOutput
+	ToShutdownPolicyPtrOutputWithContext(context.Context) ShutdownPolicyPtrOutput
+}
+
+type shutdownPolicyPtrType ShutdownPolicyArgs
+
+func ShutdownPolicyPtr(v *ShutdownPolicyArgs) ShutdownPolicyPtrInput {
+	return (*shutdownPolicyPtrType)(v)
+}
+
+func (*shutdownPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShutdownPolicy)(nil)).Elem()
+}
+
+func (i *shutdownPolicyPtrType) ToShutdownPolicyPtrOutput() ShutdownPolicyPtrOutput {
+	return i.ToShutdownPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *shutdownPolicyPtrType) ToShutdownPolicyPtrOutputWithContext(ctx context.Context) ShutdownPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShutdownPolicyPtrOutput)
+}
+
+type ShutdownPolicyOutput struct{ *pulumi.OutputState }
+
+func (ShutdownPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShutdownPolicy)(nil)).Elem()
+}
+
+func (o ShutdownPolicyOutput) ToShutdownPolicyOutput() ShutdownPolicyOutput {
+	return o
+}
+
+func (o ShutdownPolicyOutput) ToShutdownPolicyOutputWithContext(ctx context.Context) ShutdownPolicyOutput {
+	return o
+}
+
+func (o ShutdownPolicyOutput) ToShutdownPolicyPtrOutput() ShutdownPolicyPtrOutput {
+	return o.ToShutdownPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ShutdownPolicyOutput) ToShutdownPolicyPtrOutputWithContext(ctx context.Context) ShutdownPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShutdownPolicy) *ShutdownPolicy {
+		return &v
+	}).(ShutdownPolicyPtrOutput)
+}
+
+func (o ShutdownPolicyOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ShutdownPolicy) *bool { return v.Force }).(pulumi.BoolPtrOutput)
+}
+
+func (o ShutdownPolicyOutput) MaxDelinquentStake() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ShutdownPolicy) *int { return v.MaxDelinquentStake }).(pulumi.IntPtrOutput)
+}
+
+func (o ShutdownPolicyOutput) MinIdleTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ShutdownPolicy) *int { return v.MinIdleTime }).(pulumi.IntPtrOutput)
+}
+
+func (o ShutdownPolicyOutput) SkipHealthCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ShutdownPolicy) *bool { return v.SkipHealthCheck }).(pulumi.BoolPtrOutput)
+}
+
+func (o ShutdownPolicyOutput) SkipNewSnapshotCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ShutdownPolicy) *bool { return v.SkipNewSnapshotCheck }).(pulumi.BoolPtrOutput)
+}
+
+type ShutdownPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ShutdownPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShutdownPolicy)(nil)).Elem()
+}
+
+func (o ShutdownPolicyPtrOutput) ToShutdownPolicyPtrOutput() ShutdownPolicyPtrOutput {
+	return o
+}
+
+func (o ShutdownPolicyPtrOutput) ToShutdownPolicyPtrOutputWithContext(ctx context.Context) ShutdownPolicyPtrOutput {
+	return o
+}
+
+func (o ShutdownPolicyPtrOutput) Elem() ShutdownPolicyOutput {
+	return o.ApplyT(func(v *ShutdownPolicy) ShutdownPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ShutdownPolicy
+		return ret
+	}).(ShutdownPolicyOutput)
+}
+
+func (o ShutdownPolicyPtrOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShutdownPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Force
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ShutdownPolicyPtrOutput) MaxDelinquentStake() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ShutdownPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDelinquentStake
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ShutdownPolicyPtrOutput) MinIdleTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ShutdownPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinIdleTime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ShutdownPolicyPtrOutput) SkipHealthCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShutdownPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipHealthCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ShutdownPolicyPtrOutput) SkipNewSnapshotCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShutdownPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipNewSnapshotCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+type StartupPolicy struct {
+	WaitForRPCHealth *bool `pulumi:"waitForRPCHealth"`
+}
+
+// StartupPolicyInput is an input type that accepts StartupPolicyArgs and StartupPolicyOutput values.
+// You can construct a concrete instance of `StartupPolicyInput` via:
+//
+//	StartupPolicyArgs{...}
+type StartupPolicyInput interface {
+	pulumi.Input
+
+	ToStartupPolicyOutput() StartupPolicyOutput
+	ToStartupPolicyOutputWithContext(context.Context) StartupPolicyOutput
+}
+
+type StartupPolicyArgs struct {
+	WaitForRPCHealth pulumi.BoolPtrInput `pulumi:"waitForRPCHealth"`
+}
+
+func (StartupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StartupPolicy)(nil)).Elem()
+}
+
+func (i StartupPolicyArgs) ToStartupPolicyOutput() StartupPolicyOutput {
+	return i.ToStartupPolicyOutputWithContext(context.Background())
+}
+
+func (i StartupPolicyArgs) ToStartupPolicyOutputWithContext(ctx context.Context) StartupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StartupPolicyOutput)
+}
+
+func (i StartupPolicyArgs) ToStartupPolicyPtrOutput() StartupPolicyPtrOutput {
+	return i.ToStartupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i StartupPolicyArgs) ToStartupPolicyPtrOutputWithContext(ctx context.Context) StartupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StartupPolicyOutput).ToStartupPolicyPtrOutputWithContext(ctx)
+}
+
+// StartupPolicyPtrInput is an input type that accepts StartupPolicyArgs, StartupPolicyPtr and StartupPolicyPtrOutput values.
+// You can construct a concrete instance of `StartupPolicyPtrInput` via:
+//
+//	        StartupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type StartupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToStartupPolicyPtrOutput() StartupPolicyPtrOutput
+	ToStartupPolicyPtrOutputWithContext(context.Context) StartupPolicyPtrOutput
+}
+
+type startupPolicyPtrType StartupPolicyArgs
+
+func StartupPolicyPtr(v *StartupPolicyArgs) StartupPolicyPtrInput {
+	return (*startupPolicyPtrType)(v)
+}
+
+func (*startupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StartupPolicy)(nil)).Elem()
+}
+
+func (i *startupPolicyPtrType) ToStartupPolicyPtrOutput() StartupPolicyPtrOutput {
+	return i.ToStartupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *startupPolicyPtrType) ToStartupPolicyPtrOutputWithContext(ctx context.Context) StartupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StartupPolicyPtrOutput)
+}
+
+type StartupPolicyOutput struct{ *pulumi.OutputState }
+
+func (StartupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StartupPolicy)(nil)).Elem()
+}
+
+func (o StartupPolicyOutput) ToStartupPolicyOutput() StartupPolicyOutput {
+	return o
+}
+
+func (o StartupPolicyOutput) ToStartupPolicyOutputWithContext(ctx context.Context) StartupPolicyOutput {
+	return o
+}
+
+func (o StartupPolicyOutput) ToStartupPolicyPtrOutput() StartupPolicyPtrOutput {
+	return o.ToStartupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o StartupPolicyOutput) ToStartupPolicyPtrOutputWithContext(ctx context.Context) StartupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StartupPolicy) *StartupPolicy {
+		return &v
+	}).(StartupPolicyPtrOutput)
+}
+
+func (o StartupPolicyOutput) WaitForRPCHealth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StartupPolicy) *bool { return v.WaitForRPCHealth }).(pulumi.BoolPtrOutput)
+}
+
+type StartupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (StartupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StartupPolicy)(nil)).Elem()
+}
+
+func (o StartupPolicyPtrOutput) ToStartupPolicyPtrOutput() StartupPolicyPtrOutput {
+	return o
+}
+
+func (o StartupPolicyPtrOutput) ToStartupPolicyPtrOutputWithContext(ctx context.Context) StartupPolicyPtrOutput {
+	return o
+}
+
+func (o StartupPolicyPtrOutput) Elem() StartupPolicyOutput {
+	return o.ApplyT(func(v *StartupPolicy) StartupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret StartupPolicy
+		return ret
+	}).(StartupPolicyOutput)
+}
+
+func (o StartupPolicyPtrOutput) WaitForRPCHealth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StartupPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForRPCHealth
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TimeoutConfig struct {
+	RpcServiceTimeout *int `pulumi:"rpcServiceTimeout"`
+}
+
+// TimeoutConfigInput is an input type that accepts TimeoutConfigArgs and TimeoutConfigOutput values.
+// You can construct a concrete instance of `TimeoutConfigInput` via:
+//
+//	TimeoutConfigArgs{...}
+type TimeoutConfigInput interface {
+	pulumi.Input
+
+	ToTimeoutConfigOutput() TimeoutConfigOutput
+	ToTimeoutConfigOutputWithContext(context.Context) TimeoutConfigOutput
+}
+
+type TimeoutConfigArgs struct {
+	RpcServiceTimeout pulumi.IntPtrInput `pulumi:"rpcServiceTimeout"`
+}
+
+func (TimeoutConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeoutConfig)(nil)).Elem()
+}
+
+func (i TimeoutConfigArgs) ToTimeoutConfigOutput() TimeoutConfigOutput {
+	return i.ToTimeoutConfigOutputWithContext(context.Background())
+}
+
+func (i TimeoutConfigArgs) ToTimeoutConfigOutputWithContext(ctx context.Context) TimeoutConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeoutConfigOutput)
+}
+
+func (i TimeoutConfigArgs) ToTimeoutConfigPtrOutput() TimeoutConfigPtrOutput {
+	return i.ToTimeoutConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TimeoutConfigArgs) ToTimeoutConfigPtrOutputWithContext(ctx context.Context) TimeoutConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeoutConfigOutput).ToTimeoutConfigPtrOutputWithContext(ctx)
+}
+
+// TimeoutConfigPtrInput is an input type that accepts TimeoutConfigArgs, TimeoutConfigPtr and TimeoutConfigPtrOutput values.
+// You can construct a concrete instance of `TimeoutConfigPtrInput` via:
+//
+//	        TimeoutConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TimeoutConfigPtrInput interface {
+	pulumi.Input
+
+	ToTimeoutConfigPtrOutput() TimeoutConfigPtrOutput
+	ToTimeoutConfigPtrOutputWithContext(context.Context) TimeoutConfigPtrOutput
+}
+
+type timeoutConfigPtrType TimeoutConfigArgs
+
+func TimeoutConfigPtr(v *TimeoutConfigArgs) TimeoutConfigPtrInput {
+	return (*timeoutConfigPtrType)(v)
+}
+
+func (*timeoutConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeoutConfig)(nil)).Elem()
+}
+
+func (i *timeoutConfigPtrType) ToTimeoutConfigPtrOutput() TimeoutConfigPtrOutput {
+	return i.ToTimeoutConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *timeoutConfigPtrType) ToTimeoutConfigPtrOutputWithContext(ctx context.Context) TimeoutConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeoutConfigPtrOutput)
+}
+
+type TimeoutConfigOutput struct{ *pulumi.OutputState }
+
+func (TimeoutConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeoutConfig)(nil)).Elem()
+}
+
+func (o TimeoutConfigOutput) ToTimeoutConfigOutput() TimeoutConfigOutput {
+	return o
+}
+
+func (o TimeoutConfigOutput) ToTimeoutConfigOutputWithContext(ctx context.Context) TimeoutConfigOutput {
+	return o
+}
+
+func (o TimeoutConfigOutput) ToTimeoutConfigPtrOutput() TimeoutConfigPtrOutput {
+	return o.ToTimeoutConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TimeoutConfigOutput) ToTimeoutConfigPtrOutputWithContext(ctx context.Context) TimeoutConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeoutConfig) *TimeoutConfig {
+		return &v
+	}).(TimeoutConfigPtrOutput)
+}
+
+func (o TimeoutConfigOutput) RpcServiceTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeoutConfig) *int { return v.RpcServiceTimeout }).(pulumi.IntPtrOutput)
+}
+
+type TimeoutConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TimeoutConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeoutConfig)(nil)).Elem()
+}
+
+func (o TimeoutConfigPtrOutput) ToTimeoutConfigPtrOutput() TimeoutConfigPtrOutput {
+	return o
+}
+
+func (o TimeoutConfigPtrOutput) ToTimeoutConfigPtrOutputWithContext(ctx context.Context) TimeoutConfigPtrOutput {
+	return o
+}
+
+func (o TimeoutConfigPtrOutput) Elem() TimeoutConfigOutput {
+	return o.ApplyT(func(v *TimeoutConfig) TimeoutConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TimeoutConfig
+		return ret
+	}).(TimeoutConfigOutput)
+}
+
+func (o TimeoutConfigPtrOutput) RpcServiceTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeoutConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RpcServiceTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlagsInput)(nil)).Elem(), FlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyPairsInput)(nil)).Elem(), KeyPairsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricsInput)(nil)).Elem(), MetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricsPtrInput)(nil)).Elem(), MetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShutdownPolicyInput)(nil)).Elem(), ShutdownPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShutdownPolicyPtrInput)(nil)).Elem(), ShutdownPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StartupPolicyInput)(nil)).Elem(), StartupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StartupPolicyPtrInput)(nil)).Elem(), StartupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeoutConfigInput)(nil)).Elem(), TimeoutConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeoutConfigPtrInput)(nil)).Elem(), TimeoutConfigArgs{})
 	pulumi.RegisterOutputType(FlagsOutput{})
 	pulumi.RegisterOutputType(KeyPairsOutput{})
 	pulumi.RegisterOutputType(MetricsOutput{})
 	pulumi.RegisterOutputType(MetricsPtrOutput{})
+	pulumi.RegisterOutputType(ShutdownPolicyOutput{})
+	pulumi.RegisterOutputType(ShutdownPolicyPtrOutput{})
+	pulumi.RegisterOutputType(StartupPolicyOutput{})
+	pulumi.RegisterOutputType(StartupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(TimeoutConfigOutput{})
+	pulumi.RegisterOutputType(TimeoutConfigPtrOutput{})
 }

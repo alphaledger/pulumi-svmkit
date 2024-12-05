@@ -2,11 +2,10 @@ package account
 
 import (
 	"context"
-
 	"fmt"
 
 	"github.com/abklabs/pulumi-svmkit/pkg/svm"
-	"github.com/abklabs/svmkit/pkg/runner"
+	"github.com/abklabs/pulumi-svmkit/pkg/utils"
 	"github.com/abklabs/svmkit/pkg/solana"
 )
 
@@ -32,27 +31,15 @@ func (VoteAccount) Create(ctx context.Context, name string, input VoteAccountArg
 
 	command := client.Create()
 
-	if err := command.Check(); err != nil {
-		return "", VoteAccountState{}, fmt.Errorf("failed to check config: %w", err)
-	}
-
-	r := runner.NewRunner(input.Connection, command)
-
-	if err := r.Run(ctx); err != nil {
-		return "", VoteAccountState{}, fmt.Errorf("failed to install: %w", err)
+	if err := utils.RunnerHelper(ctx, input.Connection, command); err != nil {
+		return "", VoteAccountState{}, err
 	}
 
 	return name, state, nil
 }
 
 func (VoteAccount) Update(ctx context.Context, name string, old VoteAccountState, new VoteAccountArgs, preview bool) (VoteAccountState, error) {
-	if preview {
-		return VoteAccountState{VoteAccountArgs: new}, nil
-	}
-
-	old.VoteAccountArgs = new
-
-	return old, nil
+	return old, fmt.Errorf("Vote accounts may not be modified after creation!")
 }
 
 func (VoteAccount) Delete(ctx context.Context, name string, output VoteAccountState) error {
@@ -60,14 +47,8 @@ func (VoteAccount) Delete(ctx context.Context, name string, output VoteAccountSt
 
 	command := client.Delete()
 
-	if err := command.Check(); err != nil {
-		return fmt.Errorf("failed to check config: %w", err)
-	}
-
-	r := runner.NewRunner(output.Connection, command)
-
-	if err := r.Run(ctx); err != nil {
-		return fmt.Errorf("failed to install: %w", err)
+	if err := utils.RunnerHelper(ctx, output.Connection, command); err != nil {
+		return err
 	}
 
 	return nil

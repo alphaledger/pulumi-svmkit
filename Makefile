@@ -18,8 +18,9 @@ OS			:= $(shell uname)
 all: build install
 
 ensure::
+	go work sync
 	cd provider && go mod tidy
-	cd sdk && go mod tidy
+	cd sdk/go && go mod tidy
 
 provider $(WORKING_DIR)/bin/$(PROVIDER)::
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} ${GOLANG_FLAGS} $(PROJECT)/cmd/$(PROVIDER))
@@ -40,6 +41,7 @@ go_sdk:: $(WORKING_DIR)/bin/$(PROVIDER)
 	rm -rf sdk/go
 	pulumi package gen-sdk $(WORKING_DIR)/bin/$(PROVIDER) --language go
 	cd sdk/go && go mod init $(PROJECT)/sdk/go && go mod tidy && go mod edit -go=1.22
+	$(MAKE) ensure
 
 nodejs_sdk:: VERSION := $(shell pulumictl get version --language javascript)
 nodejs_sdk:: $(WORKING_DIR)/bin/$(PROVIDER)

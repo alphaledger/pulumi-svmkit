@@ -7,10 +7,10 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/abklabs/pulumi-svmkit/pkg/ssh"
 	"github.com/abklabs/pulumi-svmkit/pkg/svm"
-	"github.com/abklabs/svmkit/pkg/runner"
+	"github.com/abklabs/pulumi-svmkit/pkg/utils"
 	"github.com/abklabs/svmkit/pkg/solana"
-	"github.com/abklabs/svmkit/pkg/ssh"
 )
 
 // Solana represents a Pulumi resource for building the genesis ledger for the Solana network.
@@ -51,14 +51,8 @@ func (Solana) Create(ctx context.Context, name string, input SolanaArgs, preview
 	genesis := input.Genesis
 	command := genesis.Create()
 
-	if err := command.Check(); err != nil {
-		return "", SolanaState{}, fmt.Errorf("failed to check genesis config: %w", err)
-	}
-
-	r := runner.NewRunner(input.Connection, command)
-
-	if err := r.Run(ctx); err != nil {
-		return "", SolanaState{}, fmt.Errorf("failed to setup Solana genesis: %w", err)
+	if err := utils.RunnerHelper(ctx, input.Connection, command); err != nil {
+		return "", SolanaState{}, err
 	}
 
 	// Establish SSH connection
@@ -77,4 +71,8 @@ func (Solana) Create(ctx context.Context, name string, input SolanaArgs, preview
 	state.Hash = strings.TrimSpace(stdout)
 
 	return name, state, nil
+}
+
+func (Solana) Update(ctx context.Context, name string, oldState SolanaState, newInput SolanaArgs, preview bool) (SolanaState, error) {
+	return oldState, fmt.Errorf("Genesis configuration may not be modified after initial creation!")
 }

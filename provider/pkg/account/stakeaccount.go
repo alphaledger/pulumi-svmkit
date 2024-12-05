@@ -2,11 +2,10 @@ package account
 
 import (
 	"context"
-
 	"fmt"
 
 	"github.com/abklabs/pulumi-svmkit/pkg/svm"
-	"github.com/abklabs/svmkit/pkg/runner"
+	"github.com/abklabs/pulumi-svmkit/pkg/utils"
 	"github.com/abklabs/svmkit/pkg/solana"
 )
 
@@ -32,25 +31,14 @@ func (StakeAccount) Create(ctx context.Context, name string, input StakeAccountA
 
 	command := client.Create()
 
-	if err := command.Check(); err != nil {
-		return "", StakeAccountState{}, fmt.Errorf("failed to check config: %w", err)
-	}
-
-	r := runner.NewRunner(input.Connection, command)
-
-	if err := r.Run(ctx); err != nil {
-		return "", StakeAccountState{}, fmt.Errorf("failed to install: %w", err)
+	if err := utils.RunnerHelper(ctx, input.Connection, command); err != nil {
+		return "", StakeAccountState{}, err
 	}
 
 	return name, state, nil
 }
 
 func (StakeAccount) Update(ctx context.Context, name string, old StakeAccountState, new StakeAccountArgs, preview bool) (StakeAccountState, error) {
-	if preview {
-		return StakeAccountState{StakeAccountArgs: new}, nil
-	}
-
-	old.StakeAccountArgs = new
-
-	return old, nil
+	// XXX - Remove this when we support redelegating stake in future.
+	return old, fmt.Errorf("Stake accounts may not be modified after creation!")
 }

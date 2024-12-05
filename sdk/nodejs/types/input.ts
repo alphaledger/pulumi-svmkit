@@ -10,26 +10,123 @@ import * as utilities from "../utilities";
 
 export namespace agave {
     export interface FlagsArgs {
+        accountIndex?: pulumi.Input<pulumi.Input<string>[]>;
+        accountIndexExcludeKey?: pulumi.Input<pulumi.Input<string>[]>;
+        accountIndexIncludeKey?: pulumi.Input<pulumi.Input<string>[]>;
+        accountShrinkPath?: pulumi.Input<pulumi.Input<string>[]>;
+        accountsDbCacheLimitMb?: pulumi.Input<number>;
+        accountsDbTestHashCalculation?: pulumi.Input<boolean>;
+        accountsHashCachePath?: pulumi.Input<string>;
+        accountsIndexBins?: pulumi.Input<number>;
+        accountsIndexPath?: pulumi.Input<pulumi.Input<string>[]>;
+        accountsIndexScanResultsLimitMb?: pulumi.Input<number>;
+        accountsShrinkOptimizeTotalSpace?: pulumi.Input<boolean>;
+        accountsShrinkRatio?: pulumi.Input<string>;
         allowPrivateAddr?: pulumi.Input<boolean>;
-        blockProductionMethod: pulumi.Input<string>;
-        dynamicPortRange: pulumi.Input<string>;
+        authorizedVoter?: pulumi.Input<pulumi.Input<string>[]>;
+        bindAddress?: pulumi.Input<string>;
+        blockProductionMethod?: pulumi.Input<string>;
+        blockVerificationMethod?: pulumi.Input<string>;
+        checkVoteAccount?: pulumi.Input<string>;
+        contactDebugInterval?: pulumi.Input<number>;
+        cuda?: pulumi.Input<boolean>;
+        debugKey?: pulumi.Input<pulumi.Input<string>[]>;
+        devHaltAtSlot?: pulumi.Input<number>;
+        disableBankingTrace?: pulumi.Input<boolean>;
+        dynamicPortRange?: pulumi.Input<string>;
+        enableBankingTrace?: pulumi.Input<number>;
+        enableBigtableLedgerUpload?: pulumi.Input<boolean>;
+        enableExtendedTxMetadataStorage?: pulumi.Input<boolean>;
+        enableRpcBigtableLedgerStorage?: pulumi.Input<boolean>;
+        enableRpcTransactionHistory?: pulumi.Input<boolean>;
         entryPoint?: pulumi.Input<pulumi.Input<string>[]>;
+        etcdCacertFile?: pulumi.Input<string>;
+        etcdCertFile?: pulumi.Input<string>;
+        etcdDomainName?: pulumi.Input<string>;
+        etcdEndpoint?: pulumi.Input<pulumi.Input<string>[]>;
+        etcdKeyFile?: pulumi.Input<string>;
+        expectedBankHash?: pulumi.Input<string>;
         expectedGenesisHash?: pulumi.Input<string>;
+        expectedShredVersion?: pulumi.Input<number>;
         extraFlags?: pulumi.Input<pulumi.Input<string>[]>;
         fullRpcAPI?: pulumi.Input<boolean>;
-        fullSnapshotIntervalSlots: pulumi.Input<number>;
+        fullSnapshotArchivePath?: pulumi.Input<string>;
+        fullSnapshotIntervalSlots?: pulumi.Input<number>;
+        geyserPluginAlwaysEnabled?: pulumi.Input<boolean>;
+        geyserPluginConfig?: pulumi.Input<pulumi.Input<string>[]>;
         gossipHost?: pulumi.Input<string>;
-        gossipPort: pulumi.Input<number>;
+        gossipPort?: pulumi.Input<number>;
+        gossipValidator?: pulumi.Input<pulumi.Input<string>[]>;
+        hardFork?: pulumi.Input<pulumi.Input<number>[]>;
+        healthCheckSlotDistance?: pulumi.Input<number>;
+        incrementalSnapshotArchivePath?: pulumi.Input<string>;
+        initCompleteFile?: pulumi.Input<string>;
         knownValidator?: pulumi.Input<pulumi.Input<string>[]>;
-        limitLedgerSize: pulumi.Input<number>;
+        limitLedgerSize?: pulumi.Input<number>;
+        logMessagesBytesLimit?: pulumi.Input<number>;
+        maxGenesisArchiveUnpackedSize?: pulumi.Input<number>;
+        maximumFullSnapshotsToRetain?: pulumi.Input<number>;
+        maximumIncrementalSnapshotsToRetain?: pulumi.Input<number>;
+        maximumLocalSnapshotAge?: pulumi.Input<number>;
+        maximumSnapshotDownloadAbort?: pulumi.Input<number>;
+        minimalSnapshotDownloadSpeed?: pulumi.Input<number>;
+        noGenesisFetch?: pulumi.Input<boolean>;
+        noIncrementalSnapshots?: pulumi.Input<boolean>;
+        noSnapshotFetch?: pulumi.Input<boolean>;
         noVoting?: pulumi.Input<boolean>;
         noWaitForVoteToStartLeader: pulumi.Input<boolean>;
-        onlyKnownRPC: pulumi.Input<boolean>;
-        privateRPC: pulumi.Input<boolean>;
+        onlyKnownRPC?: pulumi.Input<boolean>;
+        privateRPC?: pulumi.Input<boolean>;
+        publicRpcAddress?: pulumi.Input<string>;
+        publicTpuAddress?: pulumi.Input<string>;
+        publicTpuForwardsAddress?: pulumi.Input<string>;
+        repairValidator?: pulumi.Input<pulumi.Input<string>[]>;
+        requireTower?: pulumi.Input<boolean>;
+        restrictedRepairOnlyMode?: pulumi.Input<boolean>;
+        rocksdbFifoShredStorageSize?: pulumi.Input<number>;
+        rocksdbShredCompaction?: pulumi.Input<string>;
+        rpcBigtableAppProfileId?: pulumi.Input<string>;
+        rpcBigtableInstanceName?: pulumi.Input<string>;
+        rpcBigtableMaxMessageSize?: pulumi.Input<number>;
+        rpcBigtableTimeout?: pulumi.Input<number>;
         rpcBindAddress: pulumi.Input<string>;
+        rpcFaucetAddress?: pulumi.Input<string>;
+        rpcMaxMultipleAccounts?: pulumi.Input<number>;
+        rpcMaxRequestBodySize?: pulumi.Input<number>;
+        rpcNicenessAdjustment?: pulumi.Input<number>;
         rpcPort: pulumi.Input<number>;
+        rpcPubsubEnableBlockSubscription?: pulumi.Input<boolean>;
+        rpcPubsubEnableVoteSubscription?: pulumi.Input<boolean>;
+        rpcPubsubMaxActiveSubscriptions?: pulumi.Input<number>;
+        rpcPubsubNotificationThreads?: pulumi.Input<number>;
+        rpcPubsubQueueCapacityBytes?: pulumi.Input<number>;
+        rpcPubsubQueueCapacityItems?: pulumi.Input<number>;
+        rpcPubsubWorkerThreads?: pulumi.Input<number>;
+        rpcScanAndFixRoots?: pulumi.Input<boolean>;
+        rpcSendLeaderCount?: pulumi.Input<number>;
+        rpcSendRetryMs?: pulumi.Input<number>;
+        rpcSendServiceMaxRetries?: pulumi.Input<number>;
+        rpcSendTransactionAlsoLeader?: pulumi.Input<boolean>;
+        rpcSendTransactionRetryPoolMaxSize?: pulumi.Input<number>;
+        rpcSendTransactionTpuPeer?: pulumi.Input<pulumi.Input<string>[]>;
+        rpcThreads?: pulumi.Input<number>;
+        skipPreflightHealthCheck?: pulumi.Input<boolean>;
+        skipSeedPhraseValidation?: pulumi.Input<boolean>;
+        skipStartupLedgerVerification?: pulumi.Input<boolean>;
+        snapshotArchiveFormat?: pulumi.Input<string>;
+        snapshotIntervalSlots?: pulumi.Input<number>;
+        snapshotPackagerNicenessAdjustment?: pulumi.Input<number>;
+        snapshotVersion?: pulumi.Input<string>;
+        stakedNodesOverrides?: pulumi.Input<string>;
+        towerStorage?: pulumi.Input<string>;
+        tpuCoalesceMs?: pulumi.Input<number>;
+        tpuConnectionPoolSize?: pulumi.Input<number>;
+        tpuDisableQuic?: pulumi.Input<boolean>;
+        tpuEnableUdp?: pulumi.Input<boolean>;
         tvuReceiveThreads?: pulumi.Input<number>;
-        useSnapshotArchivesAtStartup: pulumi.Input<string>;
+        unifiedSchedulerHandlerThreads?: pulumi.Input<number>;
+        useSnapshotArchivesAtStartup?: pulumi.Input<string>;
+        waitForSupermajority?: pulumi.Input<number>;
         walRecoveryMode: pulumi.Input<string>;
     }
 
@@ -44,12 +141,21 @@ export namespace agave {
         url: pulumi.Input<string>;
         user: pulumi.Input<string>;
     }
-}
 
-export namespace genesis {
-    export interface PrimorialEntryArgs {
-        lamports: pulumi.Input<string>;
-        pubkey: pulumi.Input<string>;
+    export interface ShutdownPolicyArgs {
+        force?: pulumi.Input<boolean>;
+        maxDelinquentStake?: pulumi.Input<number>;
+        minIdleTime?: pulumi.Input<number>;
+        skipHealthCheck?: pulumi.Input<boolean>;
+        skipNewSnapshotCheck?: pulumi.Input<boolean>;
+    }
+
+    export interface StartupPolicyArgs {
+        waitForRPCHealth?: pulumi.Input<boolean>;
+    }
+
+    export interface TimeoutConfigArgs {
+        rpcServiceTimeout?: pulumi.Input<number>;
     }
 }
 
@@ -72,9 +178,36 @@ export namespace solana {
         votePubkey: pulumi.Input<string>;
     }
 
+    export interface PrimorialEntryArgs {
+        lamports: pulumi.Input<string>;
+        pubkey: pulumi.Input<string>;
+    }
+
     export interface StakeAccountKeyPairsArgs {
         stakeAccount: pulumi.Input<string>;
         voteAccount: pulumi.Input<string>;
+    }
+
+    export interface TxnOptionsArgs {
+        blockHash?: pulumi.Input<string>;
+        commitment?: pulumi.Input<string>;
+        feePayer?: pulumi.Input<string>;
+        from?: pulumi.Input<string>;
+        keyPair?: pulumi.Input<string>;
+        nonce?: pulumi.Input<string>;
+        nonceAuthority?: pulumi.Input<string>;
+        signer?: pulumi.Input<pulumi.Input<string>[]>;
+        url?: pulumi.Input<string>;
+        withComputeUnitPrice?: pulumi.Input<number>;
+        withMemo?: pulumi.Input<string>;
+        ws?: pulumi.Input<string>;
+    }
+
+    export interface ValidatorInfoArgs {
+        details?: pulumi.Input<string>;
+        iconURL?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        website?: pulumi.Input<string>;
     }
 
     export interface VoteAccountKeyPairsArgs {
@@ -94,7 +227,7 @@ export namespace ssh {
          */
         agentSocketPath?: pulumi.Input<string>;
         /**
-         * Max allowed errors on trying to dial the remote host. -1 set count to unlimited. Default value is 1000.
+         * Max allowed errors on trying to dial the remote host. -1 set count to unlimited. Default value is 10.
          */
         dialErrorLimit?: pulumi.Input<number>;
         /**
@@ -122,6 +255,10 @@ export namespace ssh {
          */
         privateKeyPassword?: pulumi.Input<string>;
         /**
+         * The connection settings for the bastion/proxy host.
+         */
+        proxy?: pulumi.Input<inputs.ssh.ProxyConnectionArgs>;
+        /**
          * The user that we should use for the connection.
          */
         user?: pulumi.Input<string>;
@@ -132,7 +269,62 @@ export namespace ssh {
     export function connectionArgsProvideDefaults(val: ConnectionArgs): ConnectionArgs {
         return {
             ...val,
-            dialErrorLimit: (val.dialErrorLimit) ?? 1000,
+            dialErrorLimit: (val.dialErrorLimit) ?? 10,
+            perDialTimeout: (val.perDialTimeout) ?? 15,
+            port: (val.port) ?? 22,
+            proxy: (val.proxy ? pulumi.output(val.proxy).apply(inputs.ssh.proxyConnectionArgsProvideDefaults) : undefined),
+            user: (val.user) ?? "root",
+        };
+    }
+
+    /**
+     * Instructions for how to connect to a remote endpoint via a bastion host.
+     */
+    export interface ProxyConnectionArgs {
+        /**
+         * SSH Agent socket path. Default to environment variable SSH_AUTH_SOCK if present.
+         */
+        agentSocketPath?: pulumi.Input<string>;
+        /**
+         * Max allowed errors on trying to dial the remote host. -1 set count to unlimited. Default value is 10.
+         */
+        dialErrorLimit?: pulumi.Input<number>;
+        /**
+         * The address of the bastion host to connect to.
+         */
+        host: pulumi.Input<string>;
+        /**
+         * The password we should use for the connection to the bastion host.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * Max number of seconds for each dial attempt. 0 implies no maximum. Default value is 15 seconds.
+         */
+        perDialTimeout?: pulumi.Input<number>;
+        /**
+         * The port of the bastion host to connect to.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The contents of an SSH key to use for the connection. This takes preference over the password if provided.
+         */
+        privateKey?: pulumi.Input<string>;
+        /**
+         * The password to use in case the private key is encrypted.
+         */
+        privateKeyPassword?: pulumi.Input<string>;
+        /**
+         * The user that we should use for the connection to the bastion host.
+         */
+        user?: pulumi.Input<string>;
+    }
+    /**
+     * proxyConnectionArgsProvideDefaults sets the appropriate defaults for ProxyConnectionArgs
+     */
+    export function proxyConnectionArgsProvideDefaults(val: ProxyConnectionArgs): ProxyConnectionArgs {
+        return {
+            ...val,
+            dialErrorLimit: (val.dialErrorLimit) ?? 10,
             perDialTimeout: (val.perDialTimeout) ?? 15,
             port: (val.port) ?? 22,
             user: (val.user) ?? "root",
